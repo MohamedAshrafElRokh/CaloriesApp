@@ -6,11 +6,13 @@ interface Props  {
     onGetData(data:dataModal):void
 }
 
-export const CalculateForm: FC <Props>= ({onGetData}) =>
+export const CalculateForm: FC <Props>= ({onGetData},{onManBmi}) =>
 {
     const [option,setOption] = useState<string>('')
+    const [gender,setGender] = useState<string>('')
     const weightRef = useRef<HTMLInputElement>(null)
     const hightRef = useRef<HTMLInputElement>(null)
+    const AgeRef = useRef<HTMLInputElement>(null)
 
     const onChaneHandler = (e:React.ChangeEvent<HTMLSelectElement>)=>
     {
@@ -19,11 +21,15 @@ export const CalculateForm: FC <Props>= ({onGetData}) =>
     }
     const submitHandler = (e: React.FormEvent<HTMLFormElement>) =>
     {
+
         e.preventDefault()
+
         const inputVlaue = {
             weight:  weightRef.current!.value,
             height: hightRef.current!.value,
-            option: option
+            option: option,
+            age: AgeRef.current!.value,
+            gender:gender
         }
         
        
@@ -38,7 +44,16 @@ export const CalculateForm: FC <Props>= ({onGetData}) =>
         <label htmlFor="text" > Enter Your Body Hight</label>
         <input type='text' id="text" ref={hightRef} />
         <br />
-        <select id="num-select" defaultValue={option} onChange={(e)=>onChaneHandler(e)}>
+        <label htmlFor="text" > Enter Your Age</label>
+        <input type='text' id="text" ref={AgeRef} />
+        <br />
+
+        <div >
+            <input type="radio" value="Male" name="gender" onChange={e=>setGender(e.target.value)}/> Male
+            <input type="radio" value="Female" name="gender" onChange={e => setGender(e.target.value)} /> Female
+        </div>
+
+        <select  id="num-select" defaultValue={option} onChange={(e)=>onChaneHandler(e)}>
             <option value="move to" >
                 Select activity
             </option>

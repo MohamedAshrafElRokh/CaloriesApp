@@ -1,6 +1,6 @@
 
 type ModalBody = {
-    BMI:number,
+    bmr:number,
     calories: number,
     protein: number,
     fat:number,
