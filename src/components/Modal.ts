@@ -1,10 +1,12 @@
 
 type ModalBody = {
     bmr:number,
-    calories: number,
+    amr: number,
     protein: number,
     fat:number,
-    carb:number
+   carb:number,
+    proteinCal:number,
+    fatCal:number
 }
 
 export default ModalBody 

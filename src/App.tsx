@@ -18,22 +18,28 @@ const App :FC = () => {
     const option = input.option
     const gender = input.gender
   
-   
-    
-      const calories = parseInt(weight) * 22 * parseFloat(option)
-      const protein = parseInt(weight) * 2.4
-      const proteinCal = protein * 4
-      const fat = parseInt(weight) * 0.4
-      const fatCal = fat * 4
-      const carb = calories - proteinCal - fatCal / 4
     setData({
       bmr: gender === 'Male' ?
         88.362 + (13.397 * parseInt(weight)) + (4.799 * parseInt(height)) - (5.677 * parseInt(age))
         : 447.593 + (9.247 * parseInt(weight)) + (3.098 * parseInt(height)) - (4.330 * parseInt(age)),
-      calories: calories,
-      fat: fat, carb: carb,
-      protein: protein
+
+      amr: gender === 'Male' ? (88.362 + (13.397 * parseInt(weight)) + (4.799 * parseInt(height)) - (5.677 * parseInt(age))) * parseFloat(option)
+        : (447.593 + (9.247 * parseInt(weight)) + (3.098 * parseInt(height)) - (4.330 * parseInt(age))) * parseFloat(option),
+
+      fat: parseInt(weight) * 0.4, 
+
+      protein: parseInt(weight) * 2.4,
+
+      proteinCal: (parseInt(weight) * 2.4) * 4,
+
+      fatCal: (parseInt(weight) * 0.4) * 4,
+
+      carb: gender === 'Male' ?
+       ((88.362 + (13.397 * parseInt(weight)) + (4.799 * parseInt(height)) - (5.677 * parseInt(age))) - ((parseInt(weight) * 2.4) * 4) - ((parseInt(weight) * 0.4) * 4)) /4
+        : ((447.593 + (9.247 * parseInt(weight)) + (3.098 * parseInt(height)) - (4.330 * parseInt(age))) - ((parseInt(weight) * 2.4) * 4) - ((parseInt(weight) * 0.4) * 4))/4,
+      
     })
+    console.log(data);
     
   }
   

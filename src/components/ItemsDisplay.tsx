@@ -11,9 +11,16 @@ const ItemsDisplay :FC <Props> = ({bodyData})=>
    
 
     return(
-        <div className="bg-black">
-            {bodyData?.calories}
-        </div>
+        <>
+            {bodyData && <ul className="bg-slate-400">
+                <li>BMR : {bodyData?.bmr} Calories</li>
+                <li>AMR: {bodyData.amr} Calories</li>
+                <li>Fat : {bodyData.fat}g</li>
+                <li>Protein : {bodyData.protein} g</li>
+                <li>Carb : {bodyData.carb} g</li>
+            </ul>}
+        </>
+        
     )
 }
 
