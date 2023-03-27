@@ -1,5 +1,5 @@
 import ModalBody from "./Modal"
-import react ,{FC} from 'react'
+import {FC} from 'react'
 interface Props
 {
     bodyData: ModalBody | null

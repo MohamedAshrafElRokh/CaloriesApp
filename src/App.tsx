@@ -39,7 +39,7 @@ const App :FC = () => {
         : ((447.593 + (9.247 * parseInt(weight)) + (3.098 * parseInt(height)) - (4.330 * parseInt(age))) - ((parseInt(weight) * 2.4) * 4) - ((parseInt(weight) * 0.4) * 4))/4,
       
     })
-    console.log(data);
+   
     
   }
   
